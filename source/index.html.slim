@@ -9,31 +9,30 @@ title: Welcome to Middleman
       .form-group
         label.control-label.col-md-3 名前
         .col-md-9
-          input.form-control type="text" name="name"
+          input.form-control type="text" name="name" data-bind="value: name"
       .form-group
         label.control-label.col-md-3 メールアドレス
         .col-md-9
-          input.form-control type="email" name="email"
+          input.form-control type="email" name="email" data-bind="value: email"
       .form-group
         label.control-label.col-md-3 年齢
         .col-md-9
-          input.form-control type="number" name="age"
+          input.form-control type="number" name="age" data-bind="value: age"
       .form-group
         label.control-label.col-md-3 職業
         .col-md-9
-          select.form-control name="job"
+          select.form-control name="job" data-bind="value: selected_job"
             option value="" 選択してください
-            option value="1" 会社員
-            option value="2" 自営業
-            option value="3" 学生
-            option value="4" 主婦
-            option value="5" 無職
+            /! ko foreach: jobs
+            option data-bind="text: $data, value=$index"
+            /! /ko
       .form-group
         .col-md-offset-3.col-md-9
           .checkbox
             label
-              input type="checkbox" name="agreement" value="1"
+              input type="checkbox" name="agreement" value="1" data-bind="checked: agreement"
               | 利用規約に同意する
       .form-group
         .col-md-offset-3.col-md-2
-          button.btn.btn-primary type="button" 確認画面へ
+          button.btn.btn-primary type="button" data-bind="enable: agreement, click: conform"
+            | 確認画面へ
