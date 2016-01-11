@@ -1,0 +1,39 @@
+---
+title: Welcome to Middleman
+---
+
+.row
+  .col-md-12
+    h1.page-header アンケート
+    form.form-horizontal
+      .form-group
+        label.control-label.col-md-3 名前
+        .col-md-9
+          input.form-control type="text" name="name"
+      .form-group
+        label.control-label.col-md-3 メールアドレス
+        .col-md-9
+          input.form-control type="email" name="email"
+      .form-group
+        label.control-label.col-md-3 年齢
+        .col-md-9
+          input.form-control type="number" name="age"
+      .form-group
+        label.control-label.col-md-3 職業
+        .col-md-9
+          select.form-control name="job"
+            option value="" 選択してください
+            option value="1" 会社員
+            option value="2" 自営業
+            option value="3" 学生
+            option value="4" 主婦
+            option value="5" 無職
+      .form-group
+        .col-md-offset-3.col-md-9
+          .checkbox
+            label
+              input type="checkbox" name="agreement" value="1"
+              | 利用規約に同意する
+      .form-group
+        .col-md-offset-3.col-md-2
+          button.btn.btn-primary type="button" 確認画面へ
