@@ -18,5 +18,7 @@ class @InquiryFormVM
 
 
 $ ->
-  window.vm = new InquiryFormVM()
+  window.vm = {
+    inquiry_form_vm: new InquiryFormVM()
+  }
   ko.applyBindings(vm)
