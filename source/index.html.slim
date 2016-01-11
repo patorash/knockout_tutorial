@@ -6,56 +6,60 @@ title: Welcome to Middleman
   .col-md-12
     h1.page-header アンケート
     form.form-horizontal data-bind="with: inquiry_form_vm"
-      .form-group
-        label.control-label.col-md-3 名前
-        .col-md-9
-          input.form-control type="text" name="name" data-bind="value: name"
-      .form-group
-        label.control-label.col-md-3 メールアドレス
-        .col-md-9
-          input.form-control type="email" name="email" data-bind="value: email"
-      .form-group
-        label.control-label.col-md-3 年齢
-        .col-md-9
-          input.form-control type="number" name="age" data-bind="value: age"
-      .form-group
-        label.control-label.col-md-3 職業
-        .col-md-9
-          select.form-control name="job" data-bind="value: selected_job"
-            option value="" 選択してください
-            /! ko foreach: jobs
-            option data-bind="text: $data, value=$index"
-            /! /ko
-      .form-group
-        .col-md-offset-3.col-md-9
-          .checkbox
-            label
-              input type="checkbox" name="agreement" value="1" data-bind="checked: agreement"
-              | 利用規約に同意する
-      hr
-      .form-group
-        .col-md-offset-3.col-md-2
-          button.btn.btn-primary.btn-block type="button" data-bind="enable: agreement, click: conform"
-            | 確認画面へ
-      
-      .form-group
-        label.control-label.col-md-3 名前
-        .col-md-9
-          p.form-control-static data-bind="text: name"
-      .form-group
-        label.control-label.col-md-3 メールアドレス
-        .col-md-9
-          p.form-control-static data-bind="text: email"
-      .form-group
-        label.control-label.col-md-3 年齢
-        .col-md-9
-          p.form-control-static data-bind="text: age_text"
-      .form-group
-        label.control-label.col-md-3 職業
-        .col-md-9
-          p.form-control-static data-bind="text: selected_job"
-      hr
-      .form-group
-        .col-md-offset-3.col-md-2
-          button.btn.btn-primary.btn-block type="submit"
-            | 送信する
+      div data-bind="visible: !confirmation()"
+        .form-group
+          label.control-label.col-md-3 名前
+          .col-md-9
+            input.form-control type="text" name="name" data-bind="value: name"
+        .form-group
+          label.control-label.col-md-3 メールアドレス
+          .col-md-9
+            input.form-control type="email" name="email" data-bind="value: email"
+        .form-group
+          label.control-label.col-md-3 年齢
+          .col-md-9
+            input.form-control type="number" name="age" data-bind="value: age"
+        .form-group
+          label.control-label.col-md-3 職業
+          .col-md-9
+            select.form-control name="job" data-bind="value: selected_job"
+              option value="" 選択してください
+              /! ko foreach: jobs
+              option data-bind="text: $data, value=$index"
+              /! /ko
+        .form-group
+          .col-md-offset-3.col-md-9
+            .checkbox
+              label
+                input type="checkbox" name="agreement" value="1" data-bind="checked: agreement"
+                | 利用規約に同意する
+        hr
+        .form-group
+          .col-md-offset-3.col-md-2
+            button.btn.btn-primary.btn-block type="button" data-bind="enable: agreement, click: conform"
+              | 確認画面へ
+      div data-bind="visible: confirmation"
+        .form-group
+          label.control-label.col-md-3 名前
+          .col-md-9
+            p.form-control-static data-bind="text: name"
+        .form-group
+          label.control-label.col-md-3 メールアドレス
+          .col-md-9
+            p.form-control-static data-bind="text: email"
+        .form-group
+          label.control-label.col-md-3 年齢
+          .col-md-9
+            p.form-control-static data-bind="text: age_text"
+        .form-group
+          label.control-label.col-md-3 職業
+          .col-md-9
+            p.form-control-static data-bind="text: selected_job"
+        hr
+        .form-group
+          .col-md-offset-3.col-md-2
+            button.btn.btn-primary.btn-block type="submit"
+              | 送信する
+          .col-md-2
+            button.btn.btn-danger.btn-block type="button" data-bind="click: back_inquiry"
+              | 戻る

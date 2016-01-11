@@ -15,10 +15,13 @@ class @InquiryFormVM
       '無職',
     ]
     @agreement = ko.observable(false)
+    @confirmation = ko.observable(false)
 
   conform: ->
-    alert('確認画面へ')
+    @confirmation(true)
 
+  back_inquiry: ->
+    @confirmation(false)
 
 $ ->
   window.vm = {
