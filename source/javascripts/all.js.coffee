@@ -3,6 +3,9 @@ class @InquiryFormVM
     @name = ko.observable('')
     @email = ko.observable('')
     @age = ko.observable('')
+    @age_text = ko.computed ->
+      "#{@age()}歳"
+    , this
     @selected_job = ko.observable()
     @jobs = [
       '会社員',

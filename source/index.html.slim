@@ -32,7 +32,30 @@ title: Welcome to Middleman
             label
               input type="checkbox" name="agreement" value="1" data-bind="checked: agreement"
               | 利用規約に同意する
+      hr
       .form-group
         .col-md-offset-3.col-md-2
-          button.btn.btn-primary type="button" data-bind="enable: agreement, click: conform"
+          button.btn.btn-primary.btn-block type="button" data-bind="enable: agreement, click: conform"
             | 確認画面へ
+      
+      .form-group
+        label.control-label.col-md-3 名前
+        .col-md-9
+          p.form-control-static data-bind="text: name"
+      .form-group
+        label.control-label.col-md-3 メールアドレス
+        .col-md-9
+          p.form-control-static data-bind="text: email"
+      .form-group
+        label.control-label.col-md-3 年齢
+        .col-md-9
+          p.form-control-static data-bind="text: age_text"
+      .form-group
+        label.control-label.col-md-3 職業
+        .col-md-9
+          p.form-control-static data-bind="text: selected_job"
+      hr
+      .form-group
+        .col-md-offset-3.col-md-2
+          button.btn.btn-primary.btn-block type="submit"
+            | 送信する
