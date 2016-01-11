@@ -1,3 +1,16 @@
+class @AppViewModel
+  add_view_model: (view_model_name, view_model) ->
+    Object.defineProperty(this, view_model_name, {
+      value: view_model,
+      writable: false,
+      enumerable: true
+    })
+
+  add_view_models: (hash) ->
+    self = this
+    $.each hash, (key, value) ->
+      self.add_view_model(key, hash[key])
+
 class @InquiryFormVM
   constructor: ->
     @name = ko.observable('')
@@ -24,7 +37,8 @@ class @InquiryFormVM
     @confirmation(false)
 
 $ ->
-  window.vm = {
-    inquiry_form_vm: new InquiryFormVM()
-  }
+  window.vm = new AppViewModel()
+  vm.add_view_models(inquiry_form_vm: new InquiryFormVM())
+
+$(window).load ->
   ko.applyBindings(vm)
